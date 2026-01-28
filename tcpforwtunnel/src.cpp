@@ -116,6 +116,10 @@ void relay(tunnel_ctx& ctx) {
 		if (FD_ISSET(ctx.client_socket, &readfds)) {
 
 			int bytes = recv(ctx.client_socket, buffer, sizeof(buffer), 0);
+			for (int i = 0; i < bytes; i++)
+				printf("%02X ", (unsigned char)buffer[i]);
+			printf("\n");
+			
 			if (bytes <= 0) break;
 			send(ctx.remote_socket, buffer, sizeof(buffer), 0);
 		
@@ -124,6 +128,11 @@ void relay(tunnel_ctx& ctx) {
 		if (FD_ISSET(ctx.remote_socket, &readfds)) {
 
 			int bytes = recv(ctx.remote_socket, buffer, sizeof(buffer), 0);
+
+			for (int i = 0; i < bytes; i++)
+				printf("%02X ", (unsigned char)buffer[i]);
+			printf("\n");
+
 			if (bytes <= 0)break;
 			send(ctx.client_socket, buffer, sizeof(buffer), 0);
 
