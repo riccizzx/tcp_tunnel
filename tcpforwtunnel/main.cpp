@@ -1,6 +1,23 @@
 
-#include "tunnel.hpp"
+/*
+	https://github.com/riccizzx/tcp-tunnel
 
+	this tunnel is parsing all data between client and remote server
+	without any modification, just relay the data as is and print hex dump of the data
+
+	the client and remote server don't connect directly, the tunnel server is in the middle
+	so the client doesn't know about the remote server and the remote server doesn't know about the client
+
+	this program is useful for debugging and testing network applications
+	and also for bypassing network restrictions and firewalls
+
+	can be used as a base for more advanced tcp tunnel with encryption, compression, etc
+
+	can be used to simulate a man in the middle attack for educational purposes or security testing
+
+*/
+
+#include "tunnel.hpp"
 
 int main() {
 

@@ -7,7 +7,7 @@ namespace config
 	constexpr int BUFFER_SIZE = 4096;
 	constexpr int LOCAL_PORT = 9909;
 	constexpr const char* REMOTE_IP = "127.0.0.1";
-	constexpr int REMOTE_PORT = 8080;
+	constexpr int REMOTE_PORT = 49667;
 
 };
 

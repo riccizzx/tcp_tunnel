@@ -79,7 +79,7 @@ SOCKET connect_remote() {
 	sockaddr_in addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(REMOTE_PORT);
-
+	
 	inet_pton(AF_INET, REMOTE_IP, &addr.sin_addr);
 
 	if (connect(s, (sockaddr*)&addr, sizeof(addr)) == SOCKET_ERROR) {
@@ -95,6 +95,15 @@ SOCKET connect_remote() {
 	return s;
 
 }
+
+/*
+
++-----------+       +----------------+       +------------------+
+|   Client  | <---> | Tunnel Server  | <---> | Remote Service   |
+|           |       |  (tcp tunnel)  |       | 127.0.0.1:8080   |
++-----------+       +----------------+       +------------------+
+
+*/
 
 void relay(tunnel_ctx& ctx) {
 
