@@ -10,3 +10,14 @@ The system was designed as a network protocol study artifact, focusing on:
 - Controlled relay architecture
 - Hex-level payload analysis
 
++-----------+       +----------------+       +------------------+
+|   Client  | <---> | Tunnel Server  | <---> | Remote Service   |
+|           |       |  (TCP Relay)   |       | 127.0.0.1:8080   |
++-----------+       +----------------+       +------------------+
+
+Flow Description:
+-Tunnel listens on a local port.
+-Client establishes TCP connection with the tunnel.
+-Tunnel establishes a second TCP connection to the remote service.
+-A multiplexed event loop relays traffic in both directions.
+-Payload is optionally logged in hexadecimal representation.
